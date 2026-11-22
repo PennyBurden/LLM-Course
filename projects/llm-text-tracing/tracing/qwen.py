@@ -5,6 +5,8 @@ import numpy as np
 import torch
 from transformers import AutoModel, AutoTokenizer
 
+from .segments import COUNT, segment_ranges
+
 MODEL_ID = "Qwen/Qwen2.5-0.5B"
 REVISION = "060db6499f32faf8b98477b0a26969ef7d8b9987"
 WINDOW = 64
@@ -55,3 +57,24 @@ class QwenEncoder:
                 windows.extend([seq[:WINDOW], seq[-WINDOW:]])
             batches.append(self.pool(windows).reshape(len(ids), 2, -1))
         return np.concatenate(batches)
+
+    def encode_segments(self, texts, batch_size=12, with_offsets=False):
+        """Pool the four disjoint token windows and optionally locate them in the input."""
+        if batch_size < 1 or not texts:
+            raise ValueError("需要非空文本批次和正数 batch_size")
+        batches, spans = [], []
+        for start in range(0, len(texts), batch_size):
+            encoded = self.tokenizer(
+                texts[start:start + batch_size], add_special_tokens=False,
+                return_offsets_mapping=with_offsets, verbose=False,
+            )
+            windows = []
+            for i, tokens in enumerate(encoded["input_ids"]):
+                ranges = segment_ranges(len(tokens))
+                windows.extend(tokens[lo:hi] for lo, hi in ranges)
+                if with_offsets:
+                    offsets = encoded["offset_mapping"][i]
+                    spans.append([(offsets[lo][0], offsets[hi - 1][1])
+                                  for lo, hi in ranges if lo < hi])
+            batches.append(self.pool(windows).reshape(-1, COUNT, self.model.config.hidden_size))
+        return np.concatenate(batches), spans

@@ -7,6 +7,7 @@ import joblib
 
 from tracing.data import read_jsonl, validate_text
 from tracing.models import qwen_vectors, text_windows
+from tracing.segments import METHODS, adjacent_distances, segment_vectors
 
 
 class Predictor:
@@ -20,12 +21,29 @@ class Predictor:
             from tracing.qwen import QwenEncoder
             self.encoder = QwenEncoder(model_dir, device)
 
+    def _char_features(self, texts):
+        if self.vectorizer is not None:
+            return self.vectorizer.transform(text_windows(texts))
+
     def predict(self, texts, ids):
-        char_x = self.vectorizer.transform(text_windows(texts)) if self.vectorizer is not None else None
+        char_x = self._char_features(texts)
         if self.encoder is None:
             return self.heads.predict(char_x, ids)
-        x = qwen_vectors(self.encoder.encode(texts), self.method)
+        if self.method in METHODS:
+            windows, _ = self.encoder.encode_segments(texts)
+            x = segment_vectors(windows, self.method)
+        else:
+            x = qwen_vectors(self.encoder.encode(texts), self.method)
         return self.heads.predict(x, ids, source_x=char_x)
+
+    def predict_with_segments(self, text, record_id):
+        """Predict and describe the same four-window forward pass used by the CLI."""
+        if self.method not in METHODS:
+            raise ValueError("当前模型未使用四段采样")
+        windows, spans = self.encoder.encode_segments([text], with_offsets=True)
+        rows = self.heads.predict(segment_vectors(windows, self.method), [record_id],
+                                 source_x=self._char_features([text]))
+        return rows[record_id], spans[0], adjacent_distances(windows[0])
 
 
 def main():

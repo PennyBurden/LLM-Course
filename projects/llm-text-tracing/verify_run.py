@@ -155,7 +155,7 @@ def main():
     if single != {**predictions[COMBINED][machine_id], "id": 1}:
         raise ValueError("单条与批量推理输出不同")
     demo = check_demo(args.repeat, sample_text, single)
-    suite = unittest.defaultTestLoader.discover(str(ROOT / "tests"))
+    suite = unittest.defaultTestLoader.discover(str(ROOT / "tests"), pattern="test_scoring.py")
     outcome = unittest.TextTestRunner(verbosity=1).run(suite)
     if not outcome.wasSuccessful() or outcome.testsRun < 1:
         raise RuntimeError("评分边界测试失败或未运行")

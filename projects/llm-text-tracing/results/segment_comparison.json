@@ -1,0 +1,538 @@
+{
+  "configuration": {
+    "model": "Qwen/Qwen2.5-0.5B",
+    "revision": "060db6499f32faf8b98477b0a26969ef7d8b9987",
+    "device": "mps",
+    "dtype": "torch.float16",
+    "train_n": 1536,
+    "train_ids_sha256": "940a3943caff1b4f0c929c7a3efa0fa95a50cfa4cf20d38464a160823c7322b6",
+    "segments": 4,
+    "tokens_per_segment": 16,
+    "max_tokens_per_text": 64,
+    "batch_size": 12,
+    "test_a_total": 12350,
+    "test_a_selection": "smallest SHA256(20261122/test_a/{id}), then sort selected IDs",
+    "detector_dimensions": {
+      "qwen-segment-mean": 896,
+      "qwen-segment-change": 1792
+    },
+    "shared_family_head": "char-tfidf",
+    "logistic_C": 8
+  },
+  "dev": {
+    "n": 384,
+    "ids_sha256": "eb0f627e8f9ec8332c78a276eb97aad2788809bf3a2b9928af1cf8be4ca05bc3",
+    "results": {
+      "char-tfidf": {
+        "n": 384,
+        "n_machine": 128,
+        "machine_missed": 23,
+        "detect_macro_f1": 0.7650942521882618,
+        "source_macro_f1": 0.3438736263736264,
+        "joint_score": 0.6808501270253348,
+        "class_f1": [
+          0.7611940298507462,
+          0.8267716535433071,
+          0.7073170731707317
+        ],
+        "family_f1": [
+          0.25,
+          0.4,
+          0.24,
+          0.35,
+          0.35714285714285715,
+          0.23076923076923078,
+          0.23076923076923078,
+          0.6923076923076923
+        ],
+        "detect_confusion": [
+          [
+            102,
+            11,
+            15
+          ],
+          [
+            7,
+            105,
+            16
+          ],
+          [
+            31,
+            10,
+            87
+          ]
+        ],
+        "collaboration_errors": {
+          "machine-modify-human": {
+            "total": 55,
+            "to_human": 12,
+            "to_machine": 2
+          },
+          "human-mix-machine": {
+            "total": 39,
+            "to_human": 17,
+            "to_machine": 0
+          },
+          "machine-continue-human (short prefix)": {
+            "total": 26,
+            "to_human": 1,
+            "to_machine": 4
+          },
+          "machine-continue-human (long prefix)": {
+            "total": 8,
+            "to_human": 1,
+            "to_machine": 4
+          }
+        }
+      },
+      "qwen-detect-char-source": {
+        "n": 384,
+        "n_machine": 128,
+        "machine_missed": 10,
+        "detect_macro_f1": 0.7723661906420527,
+        "source_macro_f1": 0.3791655561815057,
+        "joint_score": 0.6937260637499434,
+        "class_f1": [
+          0.7490909090909091,
+          0.9042145593869731,
+          0.6637931034482759
+        ],
+        "family_f1": [
+          0.23529411764705882,
+          0.4,
+          0.3076923076923077,
+          0.3902439024390244,
+          0.3870967741935484,
+          0.27586206896551724,
+          0.3448275862068966,
+          0.6923076923076923
+        ],
+        "detect_confusion": [
+          [
+            103,
+            4,
+            21
+          ],
+          [
+            4,
+            118,
+            6
+          ],
+          [
+            40,
+            11,
+            77
+          ]
+        ],
+        "collaboration_errors": {
+          "machine-modify-human": {
+            "total": 55,
+            "to_human": 14,
+            "to_machine": 5
+          },
+          "human-mix-machine": {
+            "total": 39,
+            "to_human": 24,
+            "to_machine": 2
+          },
+          "machine-continue-human (short prefix)": {
+            "total": 26,
+            "to_human": 1,
+            "to_machine": 1
+          },
+          "machine-continue-human (long prefix)": {
+            "total": 8,
+            "to_human": 1,
+            "to_machine": 3
+          }
+        }
+      },
+      "qwen-segment-mean": {
+        "n": 384,
+        "n_machine": 128,
+        "machine_missed": 23,
+        "detect_macro_f1": 0.6677768606855388,
+        "source_macro_f1": 0.3572649126097402,
+        "joint_score": 0.605674471070379,
+        "class_f1": [
+          0.6643109540636042,
+          0.7984790874524715,
+          0.5405405405405406
+        ],
+        "family_f1": [
+          0.24242424242424243,
+          0.3448275862068966,
+          0.32,
+          0.358974358974359,
+          0.3448275862068966,
+          0.23076923076923078,
+          0.2962962962962963,
+          0.72
+        ],
+        "detect_confusion": [
+          [
+            94,
+            12,
+            22
+          ],
+          [
+            11,
+            105,
+            12
+          ],
+          [
+            50,
+            18,
+            60
+          ]
+        ],
+        "collaboration_errors": {
+          "machine-modify-human": {
+            "total": 55,
+            "to_human": 20,
+            "to_machine": 10
+          },
+          "human-mix-machine": {
+            "total": 39,
+            "to_human": 29,
+            "to_machine": 4
+          },
+          "machine-continue-human (short prefix)": {
+            "total": 26,
+            "to_human": 0,
+            "to_machine": 3
+          },
+          "machine-continue-human (long prefix)": {
+            "total": 8,
+            "to_human": 1,
+            "to_machine": 1
+          }
+        }
+      },
+      "qwen-segment-change": {
+        "n": 384,
+        "n_machine": 128,
+        "machine_missed": 29,
+        "detect_macro_f1": 0.6614701674661281,
+        "source_macro_f1": 0.3504170605894744,
+        "joint_score": 0.5992595460907975,
+        "class_f1": [
+          0.65,
+          0.7764705882352941,
+          0.5579399141630901
+        ],
+        "family_f1": [
+          0.24242424242424243,
+          0.37037037037037035,
+          0.32,
+          0.3333333333333333,
+          0.3448275862068966,
+          0.24,
+          0.2857142857142857,
+          0.6666666666666666
+        ],
+        "detect_confusion": [
+          [
+            91,
+            12,
+            25
+          ],
+          [
+            14,
+            99,
+            15
+          ],
+          [
+            47,
+            16,
+            65
+          ]
+        ],
+        "collaboration_errors": {
+          "machine-modify-human": {
+            "total": 55,
+            "to_human": 23,
+            "to_machine": 8
+          },
+          "human-mix-machine": {
+            "total": 39,
+            "to_human": 22,
+            "to_machine": 3
+          },
+          "machine-continue-human (short prefix)": {
+            "total": 26,
+            "to_human": 0,
+            "to_machine": 3
+          },
+          "machine-continue-human (long prefix)": {
+            "total": 8,
+            "to_human": 2,
+            "to_machine": 2
+          }
+        }
+      }
+    },
+    "change_vs_mean_detection": {
+      "corrected": 30,
+      "regressed": 34
+    }
+  },
+  "test_a": {
+    "n": 768,
+    "ids_sha256": "ee0ba89d9073976443f18dc97a1a0c9641b2cb5e3114816528153f1eb1a24d89",
+    "results": {
+      "char-tfidf": {
+        "n": 768,
+        "n_machine": 246,
+        "machine_missed": 39,
+        "detect_macro_f1": 0.7624824352394918,
+        "source_macro_f1": 0.3031486261004527,
+        "joint_score": 0.670615673411684,
+        "class_f1": [
+          0.7613636363636364,
+          0.8346774193548387,
+          0.69140625
+        ],
+        "family_f1": [
+          0.2857142857142857,
+          0.27692307692307694,
+          0.046511627906976744,
+          0.3,
+          0.3018867924528302,
+          0.32,
+          0.28125,
+          0.6129032258064516
+        ],
+        "detect_confusion": [
+          [
+            201,
+            13,
+            44
+          ],
+          [
+            12,
+            207,
+            27
+          ],
+          [
+            57,
+            30,
+            177
+          ]
+        ],
+        "collaboration_errors": {
+          "machine-continue-human (long prefix)": {
+            "total": 20,
+            "to_human": 6,
+            "to_machine": 2
+          },
+          "machine-continue-human (short prefix)": {
+            "total": 58,
+            "to_human": 2,
+            "to_machine": 11
+          },
+          "machine-modify-human": {
+            "total": 109,
+            "to_human": 12,
+            "to_machine": 11
+          },
+          "human-mix-machine": {
+            "total": 77,
+            "to_human": 37,
+            "to_machine": 6
+          }
+        }
+      },
+      "qwen-detect-char-source": {
+        "n": 768,
+        "n_machine": 246,
+        "machine_missed": 28,
+        "detect_macro_f1": 0.7837641278283654,
+        "source_macro_f1": 0.3098511730612838,
+        "joint_score": 0.688981536874949,
+        "class_f1": [
+          0.7647058823529411,
+          0.8879837067209776,
+          0.6986027944111777
+        ],
+        "family_f1": [
+          0.22641509433962265,
+          0.3076923076923077,
+          0.125,
+          0.2857142857142857,
+          0.33962264150943394,
+          0.2909090909090909,
+          0.3188405797101449,
+          0.5846153846153846
+        ],
+        "detect_confusion": [
+          [
+            208,
+            11,
+            39
+          ],
+          [
+            5,
+            218,
+            23
+          ],
+          [
+            73,
+            16,
+            175
+          ]
+        ],
+        "collaboration_errors": {
+          "machine-continue-human (long prefix)": {
+            "total": 20,
+            "to_human": 2,
+            "to_machine": 3
+          },
+          "machine-continue-human (short prefix)": {
+            "total": 58,
+            "to_human": 0,
+            "to_machine": 1
+          },
+          "machine-modify-human": {
+            "total": 109,
+            "to_human": 23,
+            "to_machine": 7
+          },
+          "human-mix-machine": {
+            "total": 77,
+            "to_human": 48,
+            "to_machine": 5
+          }
+        }
+      },
+      "qwen-segment-mean": {
+        "n": 768,
+        "n_machine": 246,
+        "machine_missed": 37,
+        "detect_macro_f1": 0.6988056488932868,
+        "source_macro_f1": 0.30938189346109857,
+        "joint_score": 0.6209208978068492,
+        "class_f1": [
+          0.7115716753022453,
+          0.8260869565217391,
+          0.5587583148558758
+        ],
+        "family_f1": [
+          0.25925925925925924,
+          0.25396825396825395,
+          0.125,
+          0.32142857142857145,
+          0.3137254901960784,
+          0.3018867924528302,
+          0.3283582089552239,
+          0.5714285714285714
+        ],
+        "detect_confusion": [
+          [
+            206,
+            17,
+            35
+          ],
+          [
+            11,
+            209,
+            26
+          ],
+          [
+            104,
+            34,
+            126
+          ]
+        ],
+        "collaboration_errors": {
+          "machine-continue-human (long prefix)": {
+            "total": 20,
+            "to_human": 6,
+            "to_machine": 4
+          },
+          "machine-continue-human (short prefix)": {
+            "total": 58,
+            "to_human": 0,
+            "to_machine": 4
+          },
+          "machine-modify-human": {
+            "total": 109,
+            "to_human": 52,
+            "to_machine": 16
+          },
+          "human-mix-machine": {
+            "total": 77,
+            "to_human": 46,
+            "to_machine": 10
+          }
+        }
+      },
+      "qwen-segment-change": {
+        "n": 768,
+        "n_machine": 246,
+        "machine_missed": 41,
+        "detect_macro_f1": 0.6756478363885772,
+        "source_macro_f1": 0.3064243399794546,
+        "joint_score": 0.6018031371067527,
+        "class_f1": [
+          0.6472727272727272,
+          0.82,
+          0.5596707818930041
+        ],
+        "family_f1": [
+          0.27450980392156865,
+          0.22950819672131148,
+          0.125,
+          0.2857142857142857,
+          0.3018867924528302,
+          0.3076923076923077,
+          0.3333333333333333,
+          0.59375
+        ],
+        "detect_confusion": [
+          [
+            178,
+            19,
+            61
+          ],
+          [
+            16,
+            205,
+            25
+          ],
+          [
+            98,
+            30,
+            136
+          ]
+        ],
+        "collaboration_errors": {
+          "machine-continue-human (long prefix)": {
+            "total": 20,
+            "to_human": 9,
+            "to_machine": 4
+          },
+          "machine-continue-human (short prefix)": {
+            "total": 58,
+            "to_human": 1,
+            "to_machine": 4
+          },
+          "machine-modify-human": {
+            "total": 109,
+            "to_human": 50,
+            "to_machine": 18
+          },
+          "human-mix-machine": {
+            "total": 77,
+            "to_human": 38,
+            "to_machine": 4
+          }
+        }
+      }
+    },
+    "change_vs_mean_detection": {
+      "corrected": 55,
+      "regressed": 77
+    }
+  }
+}

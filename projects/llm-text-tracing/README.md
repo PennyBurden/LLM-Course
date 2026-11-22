@@ -2,7 +2,15 @@
 
 输入一段文本，系统给出「纯人类撰写」「纯机器生成」或「人机协作」三类预测。对于预测为纯机器生成的文本，系统再从八个模型家族中选出一个候选来源。
 
-这是《大模型原理与技术》的三人自由选题项目。系统用冻结的 Qwen2.5-0.5B 提取文本首尾的表示，用字符特征区分生成模型家族。实验保留了字符基线、单窗口和双窗口对照，支持浏览器演示和 JSONL 批量预测。[实验报告](REPORT.md) · [三项任务完成记录](#三项任务完成记录)
+这是《大模型原理与技术》的三人自由选题项目。默认模型用冻结的 Qwen2.5-0.5B 读取文本首尾，用字符特征区分生成模型家族。新增的四段模型可以在网页中查看采样原文，观察文章不同位置的表示变化。系统也支持 JSONL 批量预测。[实验报告](REPORT.md) · [三项任务完成记录](#三项任务完成记录)
+
+## 四段采样能多识别多少协作文本
+
+从开头、两个中间位置和结尾各取最多 16 个 token，总共最多 64 个。先用四段的平均表示做检测，再用完全相同的文本和模型加入相邻段的差异。测试 A 的 264 篇人机协作文本中，两种方法分别找出 126 篇和 136 篇，同时误报从 61 篇增至 86 篇。首尾模型在同一批 768 篇上的联合得分最高，为 0.6890，网页默认选用它。[对照实验与误差分析](REPORT.md#四段采样与相邻差异) · [完整指标](results/segment_comparison.json)
+
+在网页的 **检测模型** 中选择 **Qwen 四段均值 + 相邻差异**，粘贴文本后点击 **检测文本**。结果下方列出实际读取的原文位置、片段和相邻段的余弦距离。可以用这三个距离观察哪两段变化较大。
+
+![四段检测演示，显示每个采样片段在原文中的字符位置以及三组相邻距离](results/segment_demo.png)
 
 ## 在这台电脑上演示
 
@@ -23,6 +31,15 @@
 
 ## 从干净环境复现
 
+从个人课程 Fork 获取这一阶段的项目时，可只检出进展分支里的项目目录。
+
+```bash
+git clone --filter=blob:none --depth 1 --sparse --branch progress/text-tracing https://github.com/PennyBurden/LLM-Course.git
+cd LLM-Course
+git sparse-checkout set projects/llm-text-tracing
+cd projects/llm-text-tracing
+```
+
 推荐 Python 3.11 至 3.13。本次实测版本见报告。先建立虚拟环境，再安装依赖。Windows 可在 PowerShell 运行 `.venv\Scripts\Activate.ps1` 激活环境。
 
 ```bash
@@ -41,6 +58,13 @@ python -m streamlit run app.py
 ```
 
 首次训练默认写入 `runs/main/`，包括分类器、逐条验证预测和指标。重复训练会生成带时间的目录，也可用 `--out` 指定一个新目录。评测其他轮次时用 `heldout.py --run 目录`。演示其他轮次时将环境变量 `TRACE_RUN_DIR` 设为该目录。Qwen 自动选择 CUDA、Apple MPS 或 CPU，也可用 `--device cpu` 指定设备。
+
+生成四种基线模型后，在项目根目录执行以下命令即可复现四段实验。两个四段模型、逐条预测及 `summary.json` 写入 `runs/segments/`。网页会自动显示这两个新选项。再次训练时用 `--out` 指定新目录。
+
+```bash
+python segment_experiment.py --data data/dataset.zip --gold data/test_labeled.zip
+python predict.py --model runs/segments/qwen-segment-change.joblib --text "这里填入待检测的文本。"
+```
 
 只跑字符基线时，安装 `requirements.txt` 并执行以下命令即可。已有旧课程固定划分的组员也可以把 `--data` 指向包含 `train.jsonl`、`dev.jsonl`、`dev_gold.jsonl` 的目录。
 
@@ -64,7 +88,7 @@ python predict.py --model runs/main/qwen-detect-char-source.joblib --input input
 | 工作 | 本地交付 | 结果记录 |
 |---|---|---|
 | 数据与家族溯源 | 从官方 ZIP 重建划分，逐 ID 核对训练、验证、测试 A/B 的 126,150 条记录。在全部 19,760 条验证文本上复核字符基线并分析八个家族的错判与漏检 | [核验记录](results/data_and_families.json) · [家族混淆矩阵图](results/family_confusion.png) |
-| Qwen 检测与消融 | 离线重训四种方案。额外固定每篇最多 64 个 token 和分类头维度，比较开头两段与首尾两段，实测填充掩码对池化结果的影响 | [四种方案指标](results/validation.json) · [等长窗口实验](results/window_control.json) |
+| Qwen 检测与消融 | 离线重训四种基础方案，固定预算比较开头与首尾，再用同样四个片段对照均值和相邻差异 | [四种方案指标](results/validation.json) · [等长窗口实验](results/window_control.json) · [四段实验](results/segment_comparison.json) |
 | 评分与演示 | 重跑 768 篇测试 B 文本，按 ID 对齐逆序输入的两份预测，用混淆计数独立复算三项分数。通过单条、批量、网页和评分边界测试 | [复现与演示验收](results/reproduction.json) · [独立测试结果](results/test_b.json) |
 
 本机的复跑模型和两份逐条测试预测保存在 `runs/team-verified/`。下列命令可在项目根目录复核三项交付。模型与数据已就位时可以离线运行。

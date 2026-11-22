@@ -120,8 +120,14 @@ class EvidenceIndex:
         if self.content.shape != self.titles.shape or self.content.shape[0] != len(self.parts):
             raise ValueError("文本与向量索引未对齐，请重建索引")
         self.first = {}
-        for part in self.parts:
+        fact_rows = []
+        for i, part in enumerate(self.parts):
             self.first.setdefault(part["doc"], part["body"])
+            if self.docs[part["doc"]]["kind"] == "fact":
+                fact_rows.append(i)
+        self.fact_rows = np.asarray(fact_rows, dtype=int)
+        self.fact_content = self.content[self.fact_rows]
+        self.fact_titles = self.titles[self.fact_rows]
 
     def lookup(self, key):
         doc = self.docs.get(key)
@@ -129,14 +135,15 @@ class EvidenceIndex:
 
     def ranked(self, query, improved, kind=None, scope=None, limit=5):
         q = self.vectorizer.transform([clean(query)])
-        scores = (self.content @ q.T).toarray().ravel()
+        content, titles = (self.fact_content, self.fact_titles) if kind == "fact" else (self.content, self.titles)
+        scores = (content @ q.T).toarray().ravel()
         if improved:
-            scores = 0.60 * scores + 0.40 * (self.titles @ q.T).toarray().ravel()
+            scores = 0.60 * scores + 0.40 * (titles @ q.T).toarray().ravel()
         seen, hits = set(), []
         for idx in np.argsort(-scores, kind="stable"):
             if scores[idx] <= 0:
                 break
-            part = self.parts[idx]
+            part = self.parts[self.fact_rows[idx] if kind == "fact" else idx]
             key = part["doc"]
             doc = self.docs[key]
             if key in seen or (kind and doc["kind"] != kind) or (scope and doc["scope"] != scope):

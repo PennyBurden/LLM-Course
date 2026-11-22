@@ -10,6 +10,7 @@ from tracing.segments import CHANGE, MEAN, METHODS
 
 st.set_page_config(page_title="大模型生成文本检测与溯源", page_icon="🔎")
 st.title("大模型生成文本检测与溯源")
+st.page_link("pages/1_Evidence_QA.py", label="进入溯源证据问答")
 st.write("输入一段文本，查看检测类别。系统会为判为纯机器生成的文本给出候选模型家族。")
 if "TRACE_RUN_DIR" in os.environ:
     model_dirs = [Path(os.environ["TRACE_RUN_DIR"])]

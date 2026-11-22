@@ -1,0 +1,5 @@
+-r requirements.txt
+torch==2.9.1
+transformers==5.19.0
+mlx==0.32.4; platform_system == "Darwin" and platform_machine == "arm64"
+mlx-lm==0.32.2; platform_system == "Darwin" and platform_machine == "arm64"

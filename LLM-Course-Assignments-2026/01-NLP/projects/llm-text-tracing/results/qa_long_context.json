@@ -1,0 +1,19 @@
+{
+  "fixture": "synthetic numbered archive pages with a middle needle and a final distractor",
+  "model": "Qwen/Qwen2.5-0.5B",
+  "rope": "YaRN factor 2",
+  "native_tokens": 32768,
+  "application_limit": 49152,
+  "device": "mps",
+  "backend": "mlx-metal",
+  "note_tokens": 33035,
+  "evidence_starts_after_tokens": 16292,
+  "expected_citation": "note-19572-19590",
+  "expected_answer": "秋季复核批次的档案代号是松塔427。",
+  "answer": "秋季复核批次的档案代号是松塔427。",
+  "citation": "note-19572-19590",
+  "verified_quote": true,
+  "prefilled_prompt_tokens": 33180,
+  "seconds": 42.03,
+  "passed": true
+}

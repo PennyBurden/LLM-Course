@@ -1,0 +1,1238 @@
+{
+  "model": "Qwen/Qwen2.5-0.5B",
+  "revision": "060db6499f32faf8b98477b0a26969ef7d8b9987",
+  "device": "mps",
+  "index": {
+    "case_documents": 5120,
+    "fact_documents": 19,
+    "unique_documents": 5139,
+    "chunks": 21160,
+    "vector_dimensions": 36073,
+    "case_ids_sha256": "b20464d52990259fbc54aa2d8ba8bb4dc304c9cd7aba382d79429007b3b62e11",
+    "case_originals_with_24_han_in_first_500": 0,
+    "chunk_characters": 480,
+    "overlap_characters": 60
+  },
+  "benchmark_sha256": "4b9f7d7dc08ba5aae90ae03e45638fee5f074a73c23c03aad7b7738a55aaa5a0",
+  "dialogues": 27,
+  "methods": {
+    "single_turn_tfidf": {
+      "metrics": {
+        "turns": 31,
+        "answerable": 24,
+        "answered": 31,
+        "correct_answers": 15,
+        "answer_accuracy": 0.4838709677419355,
+        "correct_citations": 14,
+        "citation_micro_f1": 0.509090909090909,
+        "unsupported_answers": 17,
+        "unsupported_per_answer": 0.5483870967741935,
+        "verified_quotes": 31,
+        "correct_refusals": 0,
+        "recall_at_k": {
+          "1": 0.625,
+          "2": 0.6666666666666666,
+          "3": 0.75,
+          "4": 0.75,
+          "5": 0.75
+        }
+      },
+      "turns": [
+        {
+          "turn": "1.1",
+          "question": "机器写、人写和一起写分别用几号标注？",
+          "expected": "labels",
+          "required": [
+            "0",
+            "1",
+            "2",
+            "人机协作"
+          ],
+          "correct": true,
+          "answer": "检测分为三类：0 是纯人类撰写，1 是纯机器生成，2 是人机协作。",
+          "citation": "labels",
+          "verified": true,
+          "retrieved": [
+            "labels",
+            "scope",
+            "default-window",
+            "source-head",
+            "case-445"
+          ],
+          "prompt_tokens": 165
+        },
+        {
+          "turn": "2.1",
+          "question": "检测分和来源分怎么算出最后的总成绩？",
+          "expected": "joint",
+          "required": [
+            "0.8",
+            "0.2"
+          ],
+          "correct": false,
+          "answer": "检测分为三类：0 是纯人类撰写，1 是纯机器生成，2 是人机协作。",
+          "citation": "labels",
+          "verified": true,
+          "retrieved": [
+            "labels",
+            "sample",
+            "joint",
+            "scope",
+            "default-window"
+          ],
+          "prompt_tokens": 176
+        },
+        {
+          "turn": "3.1",
+          "question": "检测错过一篇机器文本，会怎么影响该家族的召回？",
+          "expected": "miss",
+          "required": [
+            "-1",
+            "假阴性"
+          ],
+          "correct": false,
+          "answer": "测试 B 子集有 298 篇纯机器文本，字符基线漏检 71 篇，首尾检测配字符溯源漏检 101 篇。",
+          "citation": "b-missed",
+          "verified": true,
+          "retrieved": [
+            "miss",
+            "b-missed",
+            "sample",
+            "a-collab",
+            "families"
+          ],
+          "prompt_tokens": 206
+        },
+        {
+          "turn": "4.1",
+          "question": "八个生成模型家族从第一个到最后一个都有哪些？",
+          "expected": "families",
+          "required": [
+            "OpenAI",
+            "xAI",
+            "Moonshot"
+          ],
+          "correct": false,
+          "answer": "训练案例 82009 的公开标注为纯机器生成。生成模型家族为 OpenAI。",
+          "citation": "case-82009",
+          "verified": true,
+          "retrieved": [
+            "case-82009",
+            "case-235",
+            "case-4344",
+            "case-13882",
+            "case-78309"
+          ],
+          "prompt_tokens": 170
+        },
+        {
+          "turn": "5.1",
+          "question": "为什么有的输出的 family 是负一？",
+          "expected": "family-rule",
+          "required": [
+            "-1",
+            "纯人类",
+            "人机协作"
+          ],
+          "correct": false,
+          "answer": "检测分为三类：0 是纯人类撰写，1 是纯机器生成，2 是人机协作。",
+          "citation": "labels",
+          "verified": true,
+          "retrieved": [
+            "labels",
+            "family-rule",
+            "case-63717",
+            "case-98106",
+            "case-20112"
+          ],
+          "prompt_tokens": 172
+        },
+        {
+          "turn": "6.1",
+          "question": "固定划分后训练池和验证池各有几条数据？",
+          "expected": "split",
+          "required": [
+            "79,040",
+            "19,760"
+          ],
+          "correct": true,
+          "answer": "公开训练集的 98,800 条记录固定分成 79,040 条训练记录和 19,760 条验证记录。",
+          "citation": "split",
+          "verified": true,
+          "retrieved": [
+            "split",
+            "position",
+            "dev-score",
+            "case-46000",
+            "case-2258"
+          ],
+          "prompt_tokens": 233
+        },
+        {
+          "turn": "7.1",
+          "question": "训练检测器时每一类用了多少，八个来源又怎么抽样？",
+          "expected": "sample",
+          "required": [
+            "1,536",
+            "512",
+            "64"
+          ],
+          "correct": true,
+          "answer": "检测器用 1,536 条文本训练，三个检测类别各 512 条，其中八个机器家族各 64 条。",
+          "citation": "sample",
+          "verified": true,
+          "retrieved": [
+            "sample",
+            "default-window",
+            "joint",
+            "scope",
+            "labels"
+          ],
+          "prompt_tokens": 186
+        },
+        {
+          "turn": "8.1",
+          "question": "默认检测器用的开源模型叫什么，头尾各能看多少？",
+          "expected": "default-window",
+          "required": [
+            "Qwen2.5-0.5B",
+            "64"
+          ],
+          "correct": true,
+          "answer": "默认检测器使用冻结的 Qwen2.5-0.5B，分别读取开头和结尾各最多 64 个 token。",
+          "citation": "default-window",
+          "verified": true,
+          "retrieved": [
+            "default-window",
+            "sample",
+            "joint",
+            "four-window",
+            "b-missed"
+          ],
+          "prompt_tokens": 187
+        },
+        {
+          "turn": "9.1",
+          "question": "四个位置分别截多长，整篇能花多少 token？",
+          "expected": "four-window",
+          "required": [
+            "16",
+            "64"
+          ],
+          "correct": true,
+          "answer": "四段检测在开头、中间两个位置和末尾各采最多 16 个 token，每篇总计最多 64 个 token。",
+          "citation": "four-window",
+          "verified": true,
+          "retrieved": [
+            "four-window",
+            "source-head",
+            "case-2631",
+            "default-window",
+            "case-18154"
+          ],
+          "prompt_tokens": 191
+        },
+        {
+          "turn": "10.1",
+          "question": "家族归因的字符特征遇到超过八百字的长文怎么截？",
+          "expected": "source-head",
+          "required": [
+            "800",
+            "400",
+            "TF-IDF"
+          ],
+          "correct": true,
+          "answer": "家族溯源使用字符一元组和二元组 TF-IDF。超过 800 个字符时分别截取开头和结尾各 400 个字符。",
+          "citation": "source-head",
+          "verified": true,
+          "retrieved": [
+            "source-head",
+            "b-missed",
+            "a-score",
+            "b-score",
+            "dev-score"
+          ],
+          "prompt_tokens": 231
+        },
+        {
+          "turn": "11.1",
+          "question": "测试 A 的字符基线与首尾方案总分是多少？",
+          "expected": "a-score",
+          "required": [
+            "0.6706",
+            "0.6890"
+          ],
+          "correct": false,
+          "answer": "测试 B 子集有 298 篇纯机器文本，字符基线漏检 71 篇，首尾检测配字符溯源漏检 101 篇。",
+          "citation": "b-missed",
+          "verified": true,
+          "retrieved": [
+            "a-score",
+            "b-missed",
+            "b-score",
+            "dev-score",
+            "a-false"
+          ],
+          "prompt_tokens": 237
+        },
+        {
+          "turn": "11.2",
+          "question": "那换成 B 呢？",
+          "expected": "b-score",
+          "required": [
+            "0.5548",
+            "0.5237"
+          ],
+          "correct": false,
+          "answer": "训练案例 84807 的公开标注为纯人类撰写。未标注机器家族。",
+          "citation": "case-84807",
+          "verified": true,
+          "retrieved": [
+            "split",
+            "case-84807",
+            "case-47918",
+            "case-43490",
+            "case-19183"
+          ],
+          "prompt_tokens": 179
+        },
+        {
+          "turn": "12.1",
+          "question": "在测试 B，字符方法和首尾方法各漏掉几篇纯机器文本？",
+          "expected": "b-missed",
+          "required": [
+            "71",
+            "101"
+          ],
+          "correct": true,
+          "answer": "测试 B 子集有 298 篇纯机器文本，字符基线漏检 71 篇，首尾检测配字符溯源漏检 101 篇。",
+          "citation": "b-missed",
+          "verified": true,
+          "retrieved": [
+            "b-missed",
+            "b-score",
+            "a-score",
+            "miss",
+            "dev-score"
+          ],
+          "prompt_tokens": 242
+        },
+        {
+          "turn": "13.1",
+          "question": "测试 A 加入相邻差异，多检出了多少人机协作？",
+          "expected": "a-collab",
+          "required": [
+            "126",
+            "136"
+          ],
+          "correct": true,
+          "answer": "测试 A 有 264 篇真实协作文本，四段均值检出 126 篇，加入相邻差异后检出 136 篇，召回率从 47.7% 升至 51.5%。",
+          "citation": "a-collab",
+          "verified": true,
+          "retrieved": [
+            "a-collab",
+            "a-false",
+            "a-score",
+            "b-missed",
+            "b-score"
+          ],
+          "prompt_tokens": 256
+        },
+        {
+          "turn": "13.2",
+          "question": "那测试 A 误伤其他类别又有多少？",
+          "expected": "a-false",
+          "required": [
+            "61",
+            "86"
+          ],
+          "correct": true,
+          "answer": "测试 A 上，四段均值将 61 篇其他类别文本误报为协作，加入相邻差异后增至 86 篇，多出 25 篇误报。",
+          "citation": "a-false",
+          "verified": true,
+          "retrieved": [
+            "a-false",
+            "miss",
+            "a-score",
+            "a-collab",
+            "b-missed"
+          ],
+          "prompt_tokens": 211
+        },
+        {
+          "turn": "14.1",
+          "question": "验证子集上字符和首尾组合的联合成绩分别是多少？",
+          "expected": "dev-score",
+          "required": [
+            "0.6809",
+            "0.6937"
+          ],
+          "correct": true,
+          "answer": "在验证子集的 384 篇文本上，字符基线的联合得分为 0.6809，首尾检测配字符溯源为 0.6937。",
+          "citation": "dev-score",
+          "verified": true,
+          "retrieved": [
+            "dev-score",
+            "a-score",
+            "b-score",
+            "b-missed",
+            "source-head"
+          ],
+          "prompt_tokens": 235
+        },
+        {
+          "turn": "15.1",
+          "question": "第二个窗口挪到文末以后，等长窗口实验的得分变化是多少？",
+          "expected": "position",
+          "required": [
+            "0.6380",
+            "0.6572"
+          ],
+          "correct": true,
+          "answer": "每个窗口固定 32 个 token 时，第二窗口移到文末，验证联合得分从 0.6380 升至 0.6572，两组均识别出 71 篇协作文本。",
+          "citation": "position",
+          "verified": true,
+          "retrieved": [
+            "position",
+            "joint",
+            "a-score",
+            "b-score",
+            "dev-score"
+          ],
+          "prompt_tokens": 221
+        },
+        {
+          "turn": "16.1",
+          "question": "相邻片段余弦距离大就能定位真实作者的换手位置吗？",
+          "expected": "distance",
+          "required": [
+            "话题",
+            "编辑位置"
+          ],
+          "correct": true,
+          "answer": "余弦距离描述相邻片段在模型表示中的差异。话题或语言变化也会影响距离，单凭距离无法确定真实作者或编辑位置。",
+          "citation": "distance",
+          "verified": true,
+          "retrieved": [
+            "distance",
+            "a-collab",
+            "miss",
+            "four-window",
+            "a-false"
+          ],
+          "prompt_tokens": 211
+        },
+        {
+          "turn": "17.1",
+          "question": "样本 63 在数据集里标成哪种写作？",
+          "expected": "case-63",
+          "required": [
+            "纯机器生成"
+          ],
+          "correct": true,
+          "answer": "训练案例 63 的公开标注为纯机器生成。生成模型家族为 Google。",
+          "citation": "case-63",
+          "verified": true,
+          "retrieved": [
+            "case-63",
+            "case-63063",
+            "case-69863",
+            "case-6376",
+            "case-95163"
+          ],
+          "prompt_tokens": 169
+        },
+        {
+          "turn": "17.2",
+          "question": "那它是哪个模型厂商的？",
+          "expected": "case-63",
+          "required": [
+            "Google"
+          ],
+          "correct": false,
+          "answer": "训练案例 82009 的公开标注为纯机器生成。生成模型家族为 OpenAI。",
+          "citation": "case-82009",
+          "verified": true,
+          "retrieved": [
+            "case-82009",
+            "case-235",
+            "case-4344",
+            "case-13882",
+            "case-78309"
+          ],
+          "prompt_tokens": 166
+        },
+        {
+          "turn": "18.1",
+          "question": "请核对案例 50 的公开标注。",
+          "expected": "case-50",
+          "required": [
+            "纯人类撰写"
+          ],
+          "correct": false,
+          "answer": "训练案例 50950 的公开标注为纯机器生成。生成模型家族为 xAI。",
+          "citation": "case-50950",
+          "verified": true,
+          "retrieved": [
+            "case-50950",
+            "case-48750",
+            "case-73950",
+            "case-50229",
+            "case-50894"
+          ],
+          "prompt_tokens": 179
+        },
+        {
+          "turn": "18.2",
+          "question": "它有机器家族吗？",
+          "expected": "case-50",
+          "required": [
+            "未标注机器家族"
+          ],
+          "correct": true,
+          "answer": "训练案例 445 的公开标注为人机协作。协作方式为机器修改人工文本，未标注机器家族。",
+          "citation": "case-445",
+          "verified": true,
+          "retrieved": [
+            "case-445",
+            "case-2023",
+            "case-46000",
+            "case-3120",
+            "case-8016"
+          ],
+          "prompt_tokens": 173
+        },
+        {
+          "turn": "19.1",
+          "question": "编号 340 是什么协作方式？",
+          "expected": "case-340",
+          "required": [
+            "机器修改人工文本"
+          ],
+          "correct": false,
+          "answer": "训练案例 34040 的公开标注为纯机器生成。生成模型家族为 Alibaba。",
+          "citation": "case-34040",
+          "verified": true,
+          "retrieved": [
+            "labels",
+            "case-34040",
+            "case-34052",
+            "families",
+            "case-34050"
+          ],
+          "prompt_tokens": 170
+        },
+        {
+          "turn": "20.1",
+          "question": "样本 93 的生成模型家族是什么？",
+          "expected": "case-93",
+          "required": [
+            "Moonshot"
+          ],
+          "correct": true,
+          "answer": "训练案例 93 的公开标注为纯机器生成。生成模型家族为 Moonshot。",
+          "citation": "case-93",
+          "verified": true,
+          "retrieved": [
+            "case-75293",
+            "case-93071",
+            "case-93",
+            "case-93610",
+            "case-98493"
+          ],
+          "prompt_tokens": 168
+        },
+        {
+          "turn": "21.1",
+          "question": "样本 999999 的模型来源是什么？",
+          "expected": "",
+          "required": [],
+          "correct": false,
+          "answer": "训练案例 94999 的公开标注为纯机器生成。生成模型家族为 Moonshot。",
+          "citation": "case-94999",
+          "verified": true,
+          "retrieved": [
+            "case-49999",
+            "case-40999",
+            "case-94999",
+            "case-11999",
+            "case-87619"
+          ],
+          "prompt_tokens": 186
+        },
+        {
+          "turn": "22.1",
+          "question": "案例 50 的作者真实姓名是什么？",
+          "expected": "",
+          "required": [],
+          "correct": false,
+          "answer": "训练案例 50950 的公开标注为纯机器生成。生成模型家族为 xAI。",
+          "citation": "case-50950",
+          "verified": true,
+          "retrieved": [
+            "case-50950",
+            "case-48750",
+            "case-50894",
+            "case-73950",
+            "case-50229"
+          ],
+          "prompt_tokens": 177
+        },
+        {
+          "turn": "23.1",
+          "question": "四段差异方案在测试 B 误报了多少篇协作？",
+          "expected": "",
+          "required": [],
+          "correct": false,
+          "answer": "测试 A 上，四段均值将 61 篇其他类别文本误报为协作，加入相邻差异后增至 86 篇，多出 25 篇误报。",
+          "citation": "a-false",
+          "verified": true,
+          "retrieved": [
+            "b-score",
+            "a-false",
+            "b-missed",
+            "a-score",
+            "a-collab"
+          ],
+          "prompt_tokens": 240
+        },
+        {
+          "turn": "24.1",
+          "question": "测试 A 全量的联合得分能报一下吗？",
+          "expected": "",
+          "required": [],
+          "correct": false,
+          "answer": "在测试 A 的 768 篇子集上，字符基线的联合得分为 0.6706，首尾检测配字符溯源为 0.6890。",
+          "citation": "a-score",
+          "verified": true,
+          "retrieved": [
+            "a-score",
+            "b-score",
+            "dev-score",
+            "joint",
+            "a-false"
+          ],
+          "prompt_tokens": 233
+        },
+        {
+          "turn": "25.1",
+          "question": "现在火星表面的风速是多少？",
+          "expected": "",
+          "required": [],
+          "correct": false,
+          "answer": "联合得分等于 0.8 乘检测 Macro-F1，加上 0.2 乘溯源 Macro-F1。",
+          "citation": "joint",
+          "verified": true,
+          "retrieved": [
+            "joint"
+          ],
+          "prompt_tokens": 75
+        },
+        {
+          "turn": "26.1",
+          "question": "这门课训练这套检测器的具体电费是多少？",
+          "expected": "",
+          "required": [],
+          "correct": false,
+          "answer": "检测器用 1,536 条文本训练，三个检测类别各 512 条，其中八个机器家族各 64 条。",
+          "citation": "sample",
+          "verified": true,
+          "retrieved": [
+            "sample",
+            "default-window",
+            "joint",
+            "scope",
+            "labels"
+          ],
+          "prompt_tokens": 181
+        },
+        {
+          "turn": "27.1",
+          "question": "能从案例 63 的标注还原厂商发布的具体版本号吗？",
+          "expected": "",
+          "required": [],
+          "correct": false,
+          "answer": "训练案例 63 的公开标注为纯机器生成。生成模型家族为 Google。",
+          "citation": "case-63",
+          "verified": true,
+          "retrieved": [
+            "case-63",
+            "case-63063",
+            "case-69863",
+            "case-6376",
+            "case-95163"
+          ],
+          "prompt_tokens": 172
+        }
+      ]
+    },
+    "scoped_evidence": {
+      "metrics": {
+        "turns": 31,
+        "answerable": 24,
+        "answered": 25,
+        "correct_answers": 26,
+        "answer_accuracy": 0.8387096774193549,
+        "correct_citations": 21,
+        "citation_micro_f1": 0.8571428571428571,
+        "unsupported_answers": 4,
+        "unsupported_per_answer": 0.16,
+        "verified_quotes": 25,
+        "correct_refusals": 5,
+        "recall_at_k": {
+          "1": 0.9166666666666666,
+          "2": 0.9166666666666666,
+          "3": 0.9166666666666666,
+          "4": 0.9583333333333334,
+          "5": 0.9583333333333334
+        }
+      },
+      "turns": [
+        {
+          "turn": "1.1",
+          "question": "机器写、人写和一起写分别用几号标注？",
+          "expected": "labels",
+          "required": [
+            "0",
+            "1",
+            "2",
+            "人机协作"
+          ],
+          "correct": true,
+          "answer": "检测分为三类：0 是纯人类撰写，1 是纯机器生成，2 是人机协作。",
+          "citation": "labels",
+          "verified": true,
+          "retrieved": [
+            "labels",
+            "scope",
+            "default-window",
+            "source-head",
+            "miss"
+          ],
+          "prompt_tokens": 165
+        },
+        {
+          "turn": "2.1",
+          "question": "检测分和来源分怎么算出最后的总成绩？",
+          "expected": "joint",
+          "required": [
+            "0.8",
+            "0.2"
+          ],
+          "correct": false,
+          "answer": "在测试 A 的 768 篇子集上，字符基线的联合得分为 0.6706，首尾检测配字符溯源为 0.6890。",
+          "citation": "a-score",
+          "verified": true,
+          "retrieved": [
+            "a-score",
+            "b-score",
+            "dev-score",
+            "joint",
+            "position"
+          ],
+          "prompt_tokens": 233
+        },
+        {
+          "turn": "3.1",
+          "question": "检测错过一篇机器文本，会怎么影响该家族的召回？",
+          "expected": "miss",
+          "required": [
+            "-1",
+            "假阴性"
+          ],
+          "correct": false,
+          "answer": "检测器用 1,536 条文本训练，三个检测类别各 512 条，其中八个机器家族各 64 条。",
+          "citation": "sample",
+          "verified": true,
+          "retrieved": [
+            "miss",
+            "sample",
+            "b-missed",
+            "families",
+            "a-collab"
+          ],
+          "prompt_tokens": 206
+        },
+        {
+          "turn": "4.1",
+          "question": "八个生成模型家族从第一个到最后一个都有哪些？",
+          "expected": "families",
+          "required": [
+            "OpenAI",
+            "xAI",
+            "Moonshot"
+          ],
+          "correct": true,
+          "answer": "家族编号 0 至 7 依次对应 OpenAI、Alibaba、DeepSeek、ByteDance、Moonshot、Google、Anthropic 和 xAI。",
+          "citation": "families",
+          "verified": true,
+          "retrieved": [
+            "families",
+            "sample",
+            "default-window",
+            "family-rule",
+            "labels"
+          ],
+          "prompt_tokens": 190
+        },
+        {
+          "turn": "5.1",
+          "question": "为什么有的输出的 family 是负一？",
+          "expected": "family-rule",
+          "required": [
+            "-1",
+            "纯人类",
+            "人机协作"
+          ],
+          "correct": true,
+          "answer": "仅在检测为纯机器生成时输出候选家族。纯人类和人机协作的家族字段均为 -1。",
+          "citation": "family-rule",
+          "verified": true,
+          "retrieved": [
+            "family-rule",
+            "labels",
+            "scope",
+            "split",
+            "default-window"
+          ],
+          "prompt_tokens": 156
+        },
+        {
+          "turn": "6.1",
+          "question": "固定划分后训练池和验证池各有几条数据？",
+          "expected": "split",
+          "required": [
+            "79,040",
+            "19,760"
+          ],
+          "correct": false,
+          "answer": "现有资料没有足够证据回答这个问题。",
+          "citation": "",
+          "verified": false,
+          "retrieved": [],
+          "prompt_tokens": 0
+        },
+        {
+          "turn": "7.1",
+          "question": "训练检测器时每一类用了多少，八个来源又怎么抽样？",
+          "expected": "sample",
+          "required": [
+            "1,536",
+            "512",
+            "64"
+          ],
+          "correct": true,
+          "answer": "检测器用 1,536 条文本训练，三个检测类别各 512 条，其中八个机器家族各 64 条。",
+          "citation": "sample",
+          "verified": true,
+          "retrieved": [
+            "sample",
+            "default-window",
+            "joint",
+            "scope",
+            "families"
+          ],
+          "prompt_tokens": 186
+        },
+        {
+          "turn": "8.1",
+          "question": "默认检测器用的开源模型叫什么，头尾各能看多少？",
+          "expected": "default-window",
+          "required": [
+            "Qwen2.5-0.5B",
+            "64"
+          ],
+          "correct": true,
+          "answer": "默认检测器使用冻结的 Qwen2.5-0.5B，分别读取开头和结尾各最多 64 个 token。",
+          "citation": "default-window",
+          "verified": true,
+          "retrieved": [
+            "default-window",
+            "sample",
+            "a-score",
+            "b-missed",
+            "b-score"
+          ],
+          "prompt_tokens": 211
+        },
+        {
+          "turn": "9.1",
+          "question": "四个位置分别截多长，整篇能花多少 token？",
+          "expected": "four-window",
+          "required": [
+            "16",
+            "64"
+          ],
+          "correct": true,
+          "answer": "四段检测在开头、中间两个位置和末尾各采最多 16 个 token，每篇总计最多 64 个 token。",
+          "citation": "four-window",
+          "verified": true,
+          "retrieved": [
+            "four-window",
+            "source-head",
+            "joint",
+            "default-window",
+            "distance"
+          ],
+          "prompt_tokens": 187
+        },
+        {
+          "turn": "10.1",
+          "question": "家族归因的字符特征遇到超过八百字的长文怎么截？",
+          "expected": "source-head",
+          "required": [
+            "800",
+            "400",
+            "TF-IDF"
+          ],
+          "correct": true,
+          "answer": "家族溯源使用字符一元组和二元组 TF-IDF。超过 800 个字符时分别截取开头和结尾各 400 个字符。",
+          "citation": "source-head",
+          "verified": true,
+          "retrieved": [
+            "source-head",
+            "a-score",
+            "b-missed",
+            "b-score",
+            "dev-score"
+          ],
+          "prompt_tokens": 231
+        },
+        {
+          "turn": "11.1",
+          "question": "测试 A 的字符基线与首尾方案总分是多少？",
+          "expected": "a-score",
+          "required": [
+            "0.6706",
+            "0.6890"
+          ],
+          "correct": true,
+          "answer": "在测试 A 的 768 篇子集上，字符基线的联合得分为 0.6706，首尾检测配字符溯源为 0.6890。",
+          "citation": "a-score",
+          "verified": true,
+          "retrieved": [
+            "a-score"
+          ],
+          "prompt_tokens": 105
+        },
+        {
+          "turn": "11.2",
+          "question": "那换成 B 呢？",
+          "expected": "b-score",
+          "required": [
+            "0.5548",
+            "0.5237"
+          ],
+          "correct": true,
+          "answer": "在测试 B 的 768 篇子集上，字符基线的联合得分为 0.5548，首尾检测配字符溯源为 0.5237。",
+          "citation": "b-score",
+          "verified": true,
+          "retrieved": [
+            "b-score",
+            "b-missed"
+          ],
+          "prompt_tokens": 229
+        },
+        {
+          "turn": "12.1",
+          "question": "在测试 B，字符方法和首尾方法各漏掉几篇纯机器文本？",
+          "expected": "b-missed",
+          "required": [
+            "71",
+            "101"
+          ],
+          "correct": true,
+          "answer": "测试 B 子集有 298 篇纯机器文本，字符基线漏检 71 篇，首尾检测配字符溯源漏检 101 篇。",
+          "citation": "b-missed",
+          "verified": true,
+          "retrieved": [
+            "b-missed"
+          ],
+          "prompt_tokens": 114
+        },
+        {
+          "turn": "13.1",
+          "question": "测试 A 加入相邻差异，多检出了多少人机协作？",
+          "expected": "a-collab",
+          "required": [
+            "126",
+            "136"
+          ],
+          "correct": true,
+          "answer": "测试 A 有 264 篇真实协作文本，四段均值检出 126 篇，加入相邻差异后检出 136 篇，召回率从 47.7% 升至 51.5%。",
+          "citation": "a-collab",
+          "verified": true,
+          "retrieved": [
+            "a-collab"
+          ],
+          "prompt_tokens": 125
+        },
+        {
+          "turn": "13.2",
+          "question": "那测试 A 误伤其他类别又有多少？",
+          "expected": "a-false",
+          "required": [
+            "61",
+            "86"
+          ],
+          "correct": true,
+          "answer": "测试 A 上，四段均值将 61 篇其他类别文本误报为协作，加入相邻差异后增至 86 篇，多出 25 篇误报。",
+          "citation": "a-false",
+          "verified": true,
+          "retrieved": [
+            "a-false"
+          ],
+          "prompt_tokens": 187
+        },
+        {
+          "turn": "14.1",
+          "question": "验证子集上字符和首尾组合的联合成绩分别是多少？",
+          "expected": "dev-score",
+          "required": [
+            "0.6809",
+            "0.6937"
+          ],
+          "correct": true,
+          "answer": "在验证子集的 384 篇文本上，字符基线的联合得分为 0.6809，首尾检测配字符溯源为 0.6937。",
+          "citation": "dev-score",
+          "verified": true,
+          "retrieved": [
+            "dev-score",
+            "position"
+          ],
+          "prompt_tokens": 180
+        },
+        {
+          "turn": "15.1",
+          "question": "第二个窗口挪到文末以后，等长窗口实验的得分变化是多少？",
+          "expected": "position",
+          "required": [
+            "0.6380",
+            "0.6572"
+          ],
+          "correct": true,
+          "answer": "每个窗口固定 32 个 token 时，第二窗口移到文末，验证联合得分从 0.6380 升至 0.6572，两组均识别出 71 篇协作文本。",
+          "citation": "position",
+          "verified": true,
+          "retrieved": [
+            "position",
+            "joint",
+            "default-window",
+            "a-score",
+            "b-score"
+          ],
+          "prompt_tokens": 205
+        },
+        {
+          "turn": "16.1",
+          "question": "相邻片段余弦距离大就能定位真实作者的换手位置吗？",
+          "expected": "distance",
+          "required": [
+            "话题",
+            "编辑位置"
+          ],
+          "correct": true,
+          "answer": "余弦距离描述相邻片段在模型表示中的差异。话题或语言变化也会影响距离，单凭距离无法确定真实作者或编辑位置。",
+          "citation": "distance",
+          "verified": true,
+          "retrieved": [
+            "distance",
+            "four-window",
+            "scope",
+            "a-collab",
+            "miss"
+          ],
+          "prompt_tokens": 172
+        },
+        {
+          "turn": "17.1",
+          "question": "样本 63 在数据集里标成哪种写作？",
+          "expected": "case-63",
+          "required": [
+            "纯机器生成"
+          ],
+          "correct": true,
+          "answer": "训练案例 63 的公开标注为纯机器生成。生成模型家族为 Google。",
+          "citation": "case-63",
+          "verified": true,
+          "retrieved": [
+            "case-63"
+          ],
+          "prompt_tokens": 77
+        },
+        {
+          "turn": "17.2",
+          "question": "那它是哪个模型厂商的？",
+          "expected": "case-63",
+          "required": [
+            "Google"
+          ],
+          "correct": true,
+          "answer": "训练案例 63 的公开标注为纯机器生成。生成模型家族为 Google。",
+          "citation": "case-63",
+          "verified": true,
+          "retrieved": [
+            "case-63"
+          ],
+          "prompt_tokens": 107
+        },
+        {
+          "turn": "18.1",
+          "question": "请核对案例 50 的公开标注。",
+          "expected": "case-50",
+          "required": [
+            "纯人类撰写"
+          ],
+          "correct": true,
+          "answer": "训练案例 50 的公开标注为纯人类撰写。未标注机器家族。",
+          "citation": "case-50",
+          "verified": true,
+          "retrieved": [
+            "case-50"
+          ],
+          "prompt_tokens": 74
+        },
+        {
+          "turn": "18.2",
+          "question": "它有机器家族吗？",
+          "expected": "case-50",
+          "required": [
+            "未标注机器家族"
+          ],
+          "correct": true,
+          "answer": "训练案例 50 的公开标注为纯人类撰写。未标注机器家族。",
+          "citation": "case-50",
+          "verified": true,
+          "retrieved": [
+            "case-50"
+          ],
+          "prompt_tokens": 102
+        },
+        {
+          "turn": "19.1",
+          "question": "编号 340 是什么协作方式？",
+          "expected": "case-340",
+          "required": [
+            "机器修改人工文本"
+          ],
+          "correct": true,
+          "answer": "训练案例 340 的公开标注为人机协作。协作方式为机器修改人工文本，未标注机器家族。",
+          "citation": "case-340",
+          "verified": true,
+          "retrieved": [
+            "case-340"
+          ],
+          "prompt_tokens": 83
+        },
+        {
+          "turn": "20.1",
+          "question": "样本 93 的生成模型家族是什么？",
+          "expected": "case-93",
+          "required": [
+            "Moonshot"
+          ],
+          "correct": true,
+          "answer": "训练案例 93 的公开标注为纯机器生成。生成模型家族为 Moonshot。",
+          "citation": "case-93",
+          "verified": true,
+          "retrieved": [
+            "case-93"
+          ],
+          "prompt_tokens": 75
+        },
+        {
+          "turn": "21.1",
+          "question": "样本 999999 的模型来源是什么？",
+          "expected": "",
+          "required": [],
+          "correct": true,
+          "answer": "现有资料没有足够证据回答这个问题。",
+          "citation": "",
+          "verified": false,
+          "retrieved": [],
+          "prompt_tokens": 0
+        },
+        {
+          "turn": "22.1",
+          "question": "案例 50 的作者真实姓名是什么？",
+          "expected": "",
+          "required": [],
+          "correct": true,
+          "answer": "现有资料没有足够证据回答这个问题。",
+          "citation": "",
+          "verified": false,
+          "retrieved": [],
+          "prompt_tokens": 0
+        },
+        {
+          "turn": "23.1",
+          "question": "四段差异方案在测试 B 误报了多少篇协作？",
+          "expected": "",
+          "required": [],
+          "correct": true,
+          "answer": "现有资料没有足够证据回答这个问题。",
+          "citation": "",
+          "verified": false,
+          "retrieved": [],
+          "prompt_tokens": 0
+        },
+        {
+          "turn": "24.1",
+          "question": "测试 A 全量的联合得分能报一下吗？",
+          "expected": "",
+          "required": [],
+          "correct": true,
+          "answer": "现有资料没有足够证据回答这个问题。",
+          "citation": "",
+          "verified": false,
+          "retrieved": [],
+          "prompt_tokens": 0
+        },
+        {
+          "turn": "25.1",
+          "question": "现在火星表面的风速是多少？",
+          "expected": "",
+          "required": [],
+          "correct": false,
+          "answer": "联合得分等于 0.8 乘检测 Macro-F1，加上 0.2 乘溯源 Macro-F1。",
+          "citation": "joint",
+          "verified": true,
+          "retrieved": [
+            "joint"
+          ],
+          "prompt_tokens": 75
+        },
+        {
+          "turn": "26.1",
+          "question": "这门课训练这套检测器的具体电费是多少？",
+          "expected": "",
+          "required": [],
+          "correct": false,
+          "answer": "检测器用 1,536 条文本训练，三个检测类别各 512 条，其中八个机器家族各 64 条。",
+          "citation": "sample",
+          "verified": true,
+          "retrieved": [
+            "sample",
+            "default-window",
+            "joint",
+            "scope",
+            "labels"
+          ],
+          "prompt_tokens": 181
+        },
+        {
+          "turn": "27.1",
+          "question": "能从案例 63 的标注还原厂商发布的具体版本号吗？",
+          "expected": "",
+          "required": [],
+          "correct": true,
+          "answer": "现有资料没有足够证据回答这个问题。",
+          "citation": "",
+          "verified": false,
+          "retrieved": [],
+          "prompt_tokens": 0
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,132 @@
+{
+  "split": "test_b",
+  "total_in_split": 15000,
+  "sample_n": 768,
+  "ids_sha256": "ca75c0d8c5283f9e9db6147f4de6bdcd5c486ff5f1cbfbea3ceeef3d4f36361b",
+  "results": {
+    "char-tfidf": {
+      "n": 768,
+      "n_machine": 298,
+      "machine_missed": 71,
+      "detect_macro_f1": 0.6204603090605846,
+      "source_macro_f1": 0.29239574509776,
+      "joint_score": 0.5548473962680197,
+      "class_f1": [
+        0.5420560747663551,
+        0.717219589257504,
+        0.6021052631578947
+      ],
+      "family_f1": [
+        0.18181818181818182,
+        0.1917808219178082,
+        0.3287671232876712,
+        0.28205128205128205,
+        0.29473684210526313,
+        0.20833333333333334,
+        0.32786885245901637,
+        0.5238095238095238
+      ],
+      "detect_confusion": [
+        [
+          116,
+          77,
+          56
+        ],
+        [
+          16,
+          227,
+          55
+        ],
+        [
+          47,
+          31,
+          143
+        ]
+      ],
+      "collaboration_errors": {
+        "human-mix-machine": {
+          "total": 76,
+          "to_human": 35,
+          "to_machine": 5
+        },
+        "machine-modify-human": {
+          "total": 89,
+          "to_human": 10,
+          "to_machine": 11
+        },
+        "machine-continue-human (short prefix)": {
+          "total": 45,
+          "to_human": 0,
+          "to_machine": 11
+        },
+        "machine-continue-human (long prefix)": {
+          "total": 11,
+          "to_human": 2,
+          "to_machine": 4
+        }
+      }
+    },
+    "qwen-detect-char-source": {
+      "n": 768,
+      "n_machine": 298,
+      "machine_missed": 101,
+      "detect_macro_f1": 0.5830697782421921,
+      "source_macro_f1": 0.28611088099483384,
+      "joint_score": 0.5236779987927205,
+      "class_f1": [
+        0.5244444444444445,
+        0.6793103448275862,
+        0.5454545454545454
+      ],
+      "family_f1": [
+        0.17777777777777778,
+        0.16901408450704225,
+        0.30985915492957744,
+        0.3013698630136986,
+        0.23809523809523808,
+        0.20833333333333334,
+        0.3389830508474576,
+        0.5454545454545454
+      ],
+      "detect_confusion": [
+        [
+          118,
+          69,
+          62
+        ],
+        [
+          16,
+          197,
+          85
+        ],
+        [
+          67,
+          16,
+          138
+        ]
+      ],
+      "collaboration_errors": {
+        "human-mix-machine": {
+          "total": 76,
+          "to_human": 45,
+          "to_machine": 5
+        },
+        "machine-modify-human": {
+          "total": 89,
+          "to_human": 22,
+          "to_machine": 6
+        },
+        "machine-continue-human (short prefix)": {
+          "total": 45,
+          "to_human": 0,
+          "to_machine": 4
+        },
+        "machine-continue-human (long prefix)": {
+          "total": 11,
+          "to_human": 0,
+          "to_machine": 1
+        }
+      }
+    }
+  }
+}

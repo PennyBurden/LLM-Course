@@ -1,0 +1,377 @@
+{
+  "release": {
+    "git_blob": "76e6496cd39489e81e56598b7263283319016300",
+    "sha256": "bbf81f0758d36e4fe499275591197f695205c3d7760b9be0a35301e0752fc42b",
+    "bytes": 79547280
+  },
+  "split": {
+    "train": {
+      "records": 79040,
+      "labels": {
+        "0": 25600,
+        "1": 25600,
+        "2": 27840
+      },
+      "machine_families": {
+        "0": 3200,
+        "1": 3200,
+        "2": 3200,
+        "3": 3200,
+        "4": 3200,
+        "5": 3200,
+        "6": 3200,
+        "7": 3200
+      },
+      "duplicate_normalized_texts": 0
+    },
+    "dev": {
+      "records": 19760,
+      "labels": {
+        "0": 6400,
+        "1": 6400,
+        "2": 6960
+      },
+      "machine_families": {
+        "0": 800,
+        "1": 800,
+        "2": 800,
+        "3": 800,
+        "4": 800,
+        "5": 800,
+        "6": 800,
+        "7": 800
+      },
+      "duplicate_normalized_texts": 0
+    },
+    "overlapping_normalized_texts": 0
+  },
+  "matched_local_records": {
+    "train": 79040,
+    "dev": 19760,
+    "test_a": 12350,
+    "test_b": 15000
+  },
+  "attribution": {
+    "method": "char-tfidf",
+    "full_dev_scores": {
+      "n": 19760,
+      "n_machine": 6400,
+      "machine_missed": 1072,
+      "detect_macro_f1": 0.7578568505629207,
+      "source_macro_f1": 0.35488713770447555,
+      "joint_score": 0.6772629079912317,
+      "class_f1": [
+        0.7448569042738936,
+        0.8238750579867017,
+        0.7048385894281667
+      ],
+      "family_f1": [
+        0.2491846053489889,
+        0.2739018087855297,
+        0.24747814391392065,
+        0.45400397088021177,
+        0.37796373779637377,
+        0.2776957163958641,
+        0.3047895500725689,
+        0.6540795684423466
+      ],
+      "detect_confusion": [
+        [
+          4906,
+          439,
+          1055
+        ],
+        [
+          401,
+          5328,
+          671
+        ],
+        [
+          1466,
+          767,
+          4727
+        ]
+      ],
+      "collaboration_errors": {
+        "machine-continue-human (long prefix)": {
+          "total": 480,
+          "to_human": 102,
+          "to_machine": 76
+        },
+        "machine-continue-human (short prefix)": {
+          "total": 1440,
+          "to_human": 24,
+          "to_machine": 233
+        },
+        "human-mix-machine": {
+          "total": 2160,
+          "to_human": 965,
+          "to_machine": 110
+        },
+        "machine-modify-human": {
+          "total": 2880,
+          "to_human": 375,
+          "to_machine": 348
+        }
+      }
+    },
+    "candidate_macro_f1": 0.3888234168058584,
+    "by_family": [
+      {
+        "id": 0,
+        "family": "OpenAI",
+        "n": 800,
+        "missed_machine": 112,
+        "correct_joint": 191,
+        "candidate_f1": 0.25412339645693344,
+        "joint_source_f1": 0.2491846053489889
+      },
+      {
+        "id": 1,
+        "family": "Alibaba",
+        "n": 800,
+        "missed_machine": 112,
+        "correct_joint": 212,
+        "candidate_f1": 0.28365384615384615,
+        "joint_source_f1": 0.2739018087855297
+      },
+      {
+        "id": 2,
+        "family": "DeepSeek",
+        "n": 800,
+        "missed_machine": 158,
+        "correct_joint": 184,
+        "candidate_f1": 0.2806372549019608,
+        "joint_source_f1": 0.24747814391392065
+      },
+      {
+        "id": 3,
+        "family": "ByteDance",
+        "n": 800,
+        "missed_machine": 103,
+        "correct_joint": 343,
+        "candidate_f1": 0.4801488833746898,
+        "joint_source_f1": 0.45400397088021177
+      },
+      {
+        "id": 4,
+        "family": "Moonshot",
+        "n": 800,
+        "missed_machine": 132,
+        "correct_joint": 271,
+        "candidate_f1": 0.4244332493702771,
+        "joint_source_f1": 0.37796373779637377
+      },
+      {
+        "id": 5,
+        "family": "Google",
+        "n": 800,
+        "missed_machine": 178,
+        "correct_joint": 188,
+        "candidate_f1": 0.31413612565445026,
+        "joint_source_f1": 0.2776957163958641
+      },
+      {
+        "id": 6,
+        "family": "Anthropic",
+        "n": 800,
+        "missed_machine": 214,
+        "correct_joint": 210,
+        "candidate_f1": 0.39725171767645223,
+        "joint_source_f1": 0.3047895500725689
+      },
+      {
+        "id": 7,
+        "family": "xAI",
+        "n": 800,
+        "missed_machine": 63,
+        "correct_joint": 485,
+        "candidate_f1": 0.6762028608582574,
+        "joint_source_f1": 0.6540795684423466
+      }
+    ],
+    "candidate_confusion": [
+      [
+        208,
+        123,
+        82,
+        89,
+        124,
+        77,
+        61,
+        36
+      ],
+      [
+        142,
+        236,
+        98,
+        101,
+        66,
+        74,
+        54,
+        29
+      ],
+      [
+        81,
+        96,
+        229,
+        33,
+        66,
+        124,
+        138,
+        33
+      ],
+      [
+        84,
+        104,
+        41,
+        387,
+        44,
+        40,
+        51,
+        49
+      ],
+      [
+        151,
+        75,
+        74,
+        40,
+        337,
+        55,
+        57,
+        11
+      ],
+      [
+        68,
+        98,
+        133,
+        74,
+        74,
+        240,
+        89,
+        24
+      ],
+      [
+        52,
+        70,
+        126,
+        55,
+        53,
+        90,
+        318,
+        36
+      ],
+      [
+        51,
+        62,
+        49,
+        33,
+        24,
+        28,
+        33,
+        520
+      ]
+    ],
+    "joint_confusion": [
+      [
+        191,
+        110,
+        66,
+        81,
+        105,
+        57,
+        43,
+        35,
+        112
+      ],
+      [
+        121,
+        212,
+        85,
+        90,
+        52,
+        59,
+        42,
+        27,
+        112
+      ],
+      [
+        72,
+        79,
+        184,
+        25,
+        56,
+        92,
+        105,
+        29,
+        158
+      ],
+      [
+        75,
+        94,
+        35,
+        343,
+        36,
+        31,
+        38,
+        45,
+        103
+      ],
+      [
+        136,
+        62,
+        66,
+        35,
+        271,
+        40,
+        51,
+        7,
+        132
+      ],
+      [
+        47,
+        77,
+        111,
+        58,
+        52,
+        188,
+        66,
+        23,
+        178
+      ],
+      [
+        43,
+        55,
+        98,
+        47,
+        40,
+        61,
+        210,
+        32,
+        214
+      ],
+      [
+        48,
+        59,
+        42,
+        32,
+        22,
+        26,
+        23,
+        485,
+        63
+      ]
+    ],
+    "joint_columns": [
+      "OpenAI",
+      "Alibaba",
+      "DeepSeek",
+      "ByteDance",
+      "Moonshot",
+      "Google",
+      "Anthropic",
+      "xAI",
+      "检测漏检"
+    ]
+  }
+}

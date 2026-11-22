@@ -1,0 +1,157 @@
+{
+  "model": "Qwen/Qwen2.5-0.5B",
+  "revision": "060db6499f32faf8b98477b0a26969ef7d8b9987",
+  "weights_sha256": "88c142557820ccad55bb59756bfcfcf891de9cc6202816bd346445188a0ed342",
+  "device": "mps",
+  "dtype": "torch.float16",
+  "pooling_check": {
+    "frozen_parameters": true,
+    "eval_mode": true,
+    "padding_test_token_lengths": [
+      3,
+      30
+    ],
+    "empty_window_is_zero": true,
+    "relative_l2_errors_against_unpadded_means": [
+      0.0012974475976079702,
+      0.0006986879743635654
+    ],
+    "relative_l2_tolerance": 0.01
+  },
+  "max_tokens_per_text": 64,
+  "detector_dimensions": 1792,
+  "train_n": 1536,
+  "dev_n": 384,
+  "train_ids_sha256": "940a3943caff1b4f0c929c7a3efa0fa95a50cfa4cf20d38464a160823c7322b6",
+  "dev_ids_sha256": "eb0f627e8f9ec8332c78a276eb97aad2788809bf3a2b9928af1cf8be4ca05bc3",
+  "train_with_different_second_window": 1533,
+  "dev_with_different_second_window": 383,
+  "detection_corrected": 38,
+  "detection_regressed": 28,
+  "results": {
+    "first32_next32": {
+      "n": 384,
+      "n_machine": 128,
+      "machine_missed": 16,
+      "detect_macro_f1": 0.7058121254199685,
+      "source_macro_f1": 0.3667916743167021,
+      "joint_score": 0.6380080351993153,
+      "class_f1": [
+        0.6592592592592592,
+        0.8615384615384616,
+        0.5966386554621849
+      ],
+      "family_f1": [
+        0.18181818181818182,
+        0.35714285714285715,
+        0.2962962962962963,
+        0.358974358974359,
+        0.3870967741935484,
+        0.27586206896551724,
+        0.35714285714285715,
+        0.72
+      ],
+      "detect_confusion": [
+        [
+          89,
+          11,
+          28
+        ],
+        [
+          5,
+          112,
+          11
+        ],
+        [
+          48,
+          9,
+          71
+        ]
+      ],
+      "collaboration_errors": {
+        "machine-modify-human": {
+          "total": 55,
+          "to_human": 15,
+          "to_machine": 6
+        },
+        "human-mix-machine": {
+          "total": 39,
+          "to_human": 26,
+          "to_machine": 3
+        },
+        "machine-continue-human (short prefix)": {
+          "total": 26,
+          "to_human": 1,
+          "to_machine": 0
+        },
+        "machine-continue-human (long prefix)": {
+          "total": 8,
+          "to_human": 6,
+          "to_machine": 0
+        }
+      }
+    },
+    "first32_last32": {
+      "n": 384,
+      "n_machine": 128,
+      "machine_missed": 12,
+      "detect_macro_f1": 0.7299281019805037,
+      "source_macro_f1": 0.36611638632199095,
+      "joint_score": 0.6571657588488011,
+      "class_f1": [
+        0.6909090909090909,
+        0.8787878787878788,
+        0.6200873362445415
+      ],
+      "family_f1": [
+        0.23529411764705882,
+        0.4,
+        0.2962962962962963,
+        0.3902439024390244,
+        0.3870967741935484,
+        0.21428571428571427,
+        0.2857142857142857,
+        0.72
+      ],
+      "detect_confusion": [
+        [
+          95,
+          7,
+          26
+        ],
+        [
+          8,
+          116,
+          4
+        ],
+        [
+          44,
+          13,
+          71
+        ]
+      ],
+      "collaboration_errors": {
+        "machine-modify-human": {
+          "total": 55,
+          "to_human": 18,
+          "to_machine": 7
+        },
+        "human-mix-machine": {
+          "total": 39,
+          "to_human": 24,
+          "to_machine": 3
+        },
+        "machine-continue-human (short prefix)": {
+          "total": 26,
+          "to_human": 1,
+          "to_machine": 0
+        },
+        "machine-continue-human (long prefix)": {
+          "total": 8,
+          "to_human": 1,
+          "to_machine": 3
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,57 @@
+{
+  "training_id_hash": "940a3943caff1b4f0c929c7a3efa0fa95a50cfa4cf20d38464a160823c7322b6",
+  "dev_id_hash": "eb0f627e8f9ec8332c78a276eb97aad2788809bf3a2b9928af1cf8be4ca05bc3",
+  "validation": {
+    "char-tfidf": {
+      "matched_records": 384,
+      "joint_score": 0.6808501270253348
+    },
+    "qwen-head": {
+      "matched_records": 384,
+      "joint_score": 0.608684633379943
+    },
+    "qwen-head-tail": {
+      "matched_records": 384,
+      "joint_score": 0.6614221383815377
+    },
+    "qwen-detect-char-source": {
+      "matched_records": 384,
+      "joint_score": 0.6937260637499434
+    }
+  },
+  "test_b_id_hash": "ca75c0d8c5283f9e9db6147f4de6bdcd5c486ff5f1cbfbea3ceeef3d4f36361b",
+  "test_b": {
+    "char-tfidf": {
+      "matched_records": 768,
+      "count_based_scores": {
+        "detect_macro_f1": 0.6204603090605846,
+        "source_macro_f1": 0.29239574509776,
+        "joint_score": 0.5548473962680197
+      }
+    },
+    "qwen-detect-char-source": {
+      "matched_records": 768,
+      "count_based_scores": {
+        "detect_macro_f1": 0.5830697782421921,
+        "source_macro_f1": 0.28611088099483384,
+        "joint_score": 0.5236779987927205
+      }
+    }
+  },
+  "test_b_single_demo_id": 98,
+  "web_demo": {
+    "available_models": [
+      "字符基线",
+      "Qwen 检测 + 字符溯源",
+      "Qwen 首尾窗口",
+      "Qwen 开头窗口"
+    ],
+    "empty_input_check": true,
+    "single_prediction": {
+      "id": 1,
+      "label": 1,
+      "family": 5
+    }
+  },
+  "scoring_tests_passed": 3
+}

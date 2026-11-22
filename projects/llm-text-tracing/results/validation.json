@@ -1,0 +1,275 @@
+{
+  "configuration": {
+    "train_pool": 79040,
+    "dev_pool": 19760,
+    "train_n": 1536,
+    "dev_n": 384,
+    "train_per_family": 64,
+    "dev_per_family": 16,
+    "train_ids_sha256": "940a3943caff1b4f0c929c7a3efa0fa95a50cfa4cf20d38464a160823c7322b6",
+    "dev_ids_sha256": "eb0f627e8f9ec8332c78a276eb97aad2788809bf3a2b9928af1cf8be4ca05bc3",
+    "python": "3.13.5",
+    "sklearn": "1.6.1",
+    "numpy": "2.1.3",
+    "baseline_seconds": 0.91,
+    "model": "Qwen/Qwen2.5-0.5B",
+    "revision": "060db6499f32faf8b98477b0a26969ef7d8b9987",
+    "tokens_per_window": 64,
+    "device": "mps",
+    "dtype": "torch.float16",
+    "torch": "2.9.1",
+    "transformers": "5.19.0",
+    "batch_size": 12,
+    "qwen_seconds": 77.79
+  },
+  "results": {
+    "char-tfidf": {
+      "n": 384,
+      "n_machine": 128,
+      "machine_missed": 23,
+      "detect_macro_f1": 0.7650942521882618,
+      "source_macro_f1": 0.3438736263736264,
+      "joint_score": 0.6808501270253348,
+      "class_f1": [
+        0.7611940298507462,
+        0.8267716535433071,
+        0.7073170731707317
+      ],
+      "family_f1": [
+        0.25,
+        0.4,
+        0.24,
+        0.35,
+        0.35714285714285715,
+        0.23076923076923078,
+        0.23076923076923078,
+        0.6923076923076923
+      ],
+      "detect_confusion": [
+        [
+          102,
+          11,
+          15
+        ],
+        [
+          7,
+          105,
+          16
+        ],
+        [
+          31,
+          10,
+          87
+        ]
+      ],
+      "collaboration_errors": {
+        "machine-modify-human": {
+          "total": 55,
+          "to_human": 12,
+          "to_machine": 2
+        },
+        "human-mix-machine": {
+          "total": 39,
+          "to_human": 17,
+          "to_machine": 0
+        },
+        "machine-continue-human (short prefix)": {
+          "total": 26,
+          "to_human": 1,
+          "to_machine": 4
+        },
+        "machine-continue-human (long prefix)": {
+          "total": 8,
+          "to_human": 1,
+          "to_machine": 4
+        }
+      }
+    },
+    "qwen-head": {
+      "n": 384,
+      "n_machine": 128,
+      "machine_missed": 12,
+      "detect_macro_f1": 0.7246949951178848,
+      "source_macro_f1": 0.14464318642817628,
+      "joint_score": 0.608684633379943,
+      "class_f1": [
+        0.6891385767790262,
+        0.8721804511278195,
+        0.6127659574468085
+      ],
+      "family_f1": [
+        0.27586206896551724,
+        0.16666666666666666,
+        0.16666666666666666,
+        0.12121212121212122,
+        0.24242424242424243,
+        0.0,
+        0.06666666666666667,
+        0.11764705882352941
+      ],
+      "detect_confusion": [
+        [
+          92,
+          10,
+          26
+        ],
+        [
+          3,
+          116,
+          9
+        ],
+        [
+          44,
+          12,
+          72
+        ]
+      ],
+      "collaboration_errors": {
+        "machine-modify-human": {
+          "total": 55,
+          "to_human": 15,
+          "to_machine": 6
+        },
+        "human-mix-machine": {
+          "total": 39,
+          "to_human": 23,
+          "to_machine": 5
+        },
+        "machine-continue-human (short prefix)": {
+          "total": 26,
+          "to_human": 1,
+          "to_machine": 1
+        },
+        "machine-continue-human (long prefix)": {
+          "total": 8,
+          "to_human": 5,
+          "to_machine": 0
+        }
+      }
+    },
+    "qwen-head-tail": {
+      "n": 384,
+      "n_machine": 128,
+      "machine_missed": 10,
+      "detect_macro_f1": 0.7723661906420527,
+      "source_macro_f1": 0.2176459293394777,
+      "joint_score": 0.6614221383815377,
+      "class_f1": [
+        0.7490909090909091,
+        0.9042145593869731,
+        0.6637931034482759
+      ],
+      "family_f1": [
+        0.2857142857142857,
+        0.26666666666666666,
+        0.17142857142857143,
+        0.3,
+        0.12903225806451613,
+        0.19047619047619047,
+        0.06451612903225806,
+        0.3333333333333333
+      ],
+      "detect_confusion": [
+        [
+          103,
+          4,
+          21
+        ],
+        [
+          4,
+          118,
+          6
+        ],
+        [
+          40,
+          11,
+          77
+        ]
+      ],
+      "collaboration_errors": {
+        "machine-modify-human": {
+          "total": 55,
+          "to_human": 14,
+          "to_machine": 5
+        },
+        "human-mix-machine": {
+          "total": 39,
+          "to_human": 24,
+          "to_machine": 2
+        },
+        "machine-continue-human (short prefix)": {
+          "total": 26,
+          "to_human": 1,
+          "to_machine": 1
+        },
+        "machine-continue-human (long prefix)": {
+          "total": 8,
+          "to_human": 1,
+          "to_machine": 3
+        }
+      }
+    },
+    "qwen-detect-char-source": {
+      "n": 384,
+      "n_machine": 128,
+      "machine_missed": 10,
+      "detect_macro_f1": 0.7723661906420527,
+      "source_macro_f1": 0.3791655561815057,
+      "joint_score": 0.6937260637499434,
+      "class_f1": [
+        0.7490909090909091,
+        0.9042145593869731,
+        0.6637931034482759
+      ],
+      "family_f1": [
+        0.23529411764705882,
+        0.4,
+        0.3076923076923077,
+        0.3902439024390244,
+        0.3870967741935484,
+        0.27586206896551724,
+        0.3448275862068966,
+        0.6923076923076923
+      ],
+      "detect_confusion": [
+        [
+          103,
+          4,
+          21
+        ],
+        [
+          4,
+          118,
+          6
+        ],
+        [
+          40,
+          11,
+          77
+        ]
+      ],
+      "collaboration_errors": {
+        "machine-modify-human": {
+          "total": 55,
+          "to_human": 14,
+          "to_machine": 5
+        },
+        "human-mix-machine": {
+          "total": 39,
+          "to_human": 24,
+          "to_machine": 2
+        },
+        "machine-continue-human (short prefix)": {
+          "total": 26,
+          "to_human": 1,
+          "to_machine": 1
+        },
+        "machine-continue-human (long prefix)": {
+          "total": 8,
+          "to_human": 1,
+          "to_machine": 3
+        }
+      }
+    }
+  }
+}

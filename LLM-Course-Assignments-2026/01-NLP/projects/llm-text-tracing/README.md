@@ -107,6 +107,8 @@ python predict.py --model runs/main/qwen-detect-char-source.joblib --input input
 
 ## 三项任务完成记录
 
+各项负责人与交接时要核对的内容见[报告首页的小组分工](REPORT.md#小组分工)。
+
 | 工作 | 本地交付 | 结果记录 |
 |---|---|---|
 | 数据与证据 | 核对 126,150 条记录，在完整验证集分析八家族错判，并将 5,120 份训练案例和带出处的实验卡编入检索库 | [数据核验](results/data_and_families.json) · [证据索引](qa/index.py) |

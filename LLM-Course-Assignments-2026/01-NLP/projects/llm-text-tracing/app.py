@@ -10,7 +10,9 @@ from tracing.segments import CHANGE, MEAN, METHODS
 
 st.set_page_config(page_title="大模型生成文本检测与溯源", page_icon="🔎")
 st.title("大模型生成文本检测与溯源")
-st.page_link("pages/1_Evidence_QA.py", label="进入溯源证据问答")
+qa_link, results_link = st.columns(2)
+qa_link.page_link("pages/1_Evidence_QA.py", label="进入溯源证据问答")
+results_link.page_link("pages/2_实验结果.py", label="查看实验结果与误判案例")
 st.write("输入一段文本，查看检测类别。系统会为判为纯机器生成的文本给出候选模型家族。")
 if "TRACE_RUN_DIR" in os.environ:
     model_dirs = [Path(os.environ["TRACE_RUN_DIR"])]
@@ -18,7 +20,7 @@ else:
     model_dirs = [Path("runs/main"), Path("runs/segments")]
 available = {p.stem: p for directory in model_dirs for p in sorted(directory.glob("*.joblib"))}
 if not available:
-    st.info("请先在项目根目录运行 README 中的实验命令，再刷新页面。")
+    st.info("检测新文本需要先按 README 训练分类器。上方的实验结果页可直接查看归档数据。")
     st.stop()
 
 names = {"char-tfidf": "字符基线", "qwen-head": "Qwen 开头窗口",

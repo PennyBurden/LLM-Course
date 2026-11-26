@@ -10,6 +10,7 @@ from rag_qa import DEFAULT_INDEX
 st.set_page_config(page_title="溯源证据问答", page_icon="📖")
 st.title("溯源证据问答")
 st.write("可以查询公开案例的标注，比较测试 A、B 的实验结果，或继续追问上一条证据。")
+st.page_link("pages/2_实验结果.py", label="查看训练量、复核门槛和长文实测")
 path = Path(os.environ.get("TRACE_QA_INDEX", DEFAULT_INDEX))
 if not (path / "manifest.json").is_file():
     st.info("先在项目根目录运行 python rag_qa.py build --data data/dataset.zip，然后刷新页面。")

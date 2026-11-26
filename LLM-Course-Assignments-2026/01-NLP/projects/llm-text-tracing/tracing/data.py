@@ -85,7 +85,7 @@ def read_corpus(source):
     return train, dev
 
 
-def balanced_sample(rows, per_family):
+def balanced_sample(rows, per_family, *, seed=20261119):
     """Use equal detection class sizes and equal counts for each machine family."""
     if per_family <= 0:
         raise ValueError("每家族样本量必须为正数")
@@ -102,6 +102,6 @@ def balanced_sample(rows, per_family):
                 raise ValueError(f"分层 {(label, family)} 的样本不足 {count} 条")
             # The ID is used for sampling and alignment only.
             ranked = sorted(eligible, key=lambda r: hashlib.sha256(
-                f"20261119/{r['id']}".encode("ascii")).digest())
+                f"{seed}/{r['id']}".encode("ascii")).digest())
             result.extend(ranked[:count])
     return sorted(result, key=lambda row: row["id"])

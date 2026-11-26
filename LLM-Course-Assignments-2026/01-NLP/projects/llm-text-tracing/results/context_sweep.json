@@ -1,0 +1,390 @@
+{
+  "model": "Qwen/Qwen2.5-0.5B",
+  "revision": "060db6499f32faf8b98477b0a26969ef7d8b9987",
+  "device": "mps",
+  "cases": {
+    "archive": {
+      "question": "补充材料中，秋季复核批次的档案代号是什么？",
+      "target": "秋季复核批次的档案代号是松塔427。",
+      "distractors": [
+        "春季复核批次的档案代号是白桦113。",
+        "秋季初审批次的档案代号是枫叶205。"
+      ]
+    },
+    "instrument": {
+      "question": "补充材料中，西库温控仪的校准编号是什么？",
+      "target": "西库温控仪的校准编号是云杉806。",
+      "distractors": [
+        "东库温控仪的校准编号是青石214。",
+        "西库照度计的校准编号是银杏539。"
+      ]
+    }
+  },
+  "positions": {
+    "front": 0.1,
+    "middle": 0.5,
+    "end": 0.9,
+    "absent": null
+  },
+  "index": {
+    "case_documents": 5120,
+    "fact_documents": 19,
+    "unique_documents": 5139,
+    "chunks": 21160,
+    "vector_dimensions": 36073,
+    "case_ids_sha256": "b20464d52990259fbc54aa2d8ba8bb4dc304c9cd7aba382d79429007b3b62e11",
+    "case_originals_with_24_han_in_first_500": 0,
+    "chunk_characters": 480,
+    "overlap_characters": 60
+  },
+  "trials": [
+    {
+      "case": "archive",
+      "budget": 4096,
+      "position": "front",
+      "note_tokens": 4144,
+      "notes_sha256": "76380ee8ee23bf1d898105c1fcf2bd46a10c3c280a2e491698d05d7ab49d76b2",
+      "target_start_tokens": 381,
+      "expected_citation": "note-503-521",
+      "expected_answer": "秋季复核批次的档案代号是松塔427。",
+      "answer": "秋季复核批次的档案代号是松塔427。",
+      "citation": "note-503-521",
+      "verified": true,
+      "retrieved": [
+        "note-503-521",
+        "note-1602-1620",
+        "note-3744-3762"
+      ],
+      "prompt_tokens": 4323,
+      "backend": "torch-mps",
+      "correct": true,
+      "seconds": 7.94
+    },
+    {
+      "case": "archive",
+      "budget": 4096,
+      "position": "middle",
+      "note_tokens": 4144,
+      "notes_sha256": "2f93403b74e5e1b549bf22d58fb3581feadb7e38076e6fac9fad88b5879224c0",
+      "target_start_tokens": 2008,
+      "expected_citation": "note-2650-2668",
+      "expected_answer": "秋季复核批次的档案代号是松塔427。",
+      "answer": "秋季复核批次的档案代号是松塔427。",
+      "citation": "note-2650-2668",
+      "verified": true,
+      "retrieved": [
+        "note-2650-2668",
+        "note-1583-1601",
+        "note-3744-3762"
+      ],
+      "prompt_tokens": 4327,
+      "backend": "torch-mps",
+      "correct": true,
+      "seconds": 2.78
+    },
+    {
+      "case": "archive",
+      "budget": 4096,
+      "position": "end",
+      "note_tokens": 4144,
+      "notes_sha256": "7e652f7e22f7d83c4144e269aec0a95755417de19c3a41a22da5d27d619e1521",
+      "target_start_tokens": 3699,
+      "expected_citation": "note-4860-4878",
+      "expected_answer": "秋季复核批次的档案代号是松塔427。",
+      "answer": "秋季复核批次的档案代号是松塔427。",
+      "citation": "note-4860-4878",
+      "verified": true,
+      "retrieved": [
+        "note-4860-4878",
+        "note-1583-1601",
+        "note-3725-3743"
+      ],
+      "prompt_tokens": 4327,
+      "backend": "torch-mps",
+      "correct": true,
+      "seconds": 2.77
+    },
+    {
+      "case": "archive",
+      "budget": 4096,
+      "position": "absent",
+      "note_tokens": 4129,
+      "notes_sha256": "43d6c75e801ac65ce0a92701101a4104788cac865b8af331cac3a4dfb5c8e738",
+      "target_start_tokens": null,
+      "expected_citation": "",
+      "expected_answer": "现有资料没有足够证据回答这个问题。",
+      "answer": "春季复核批次的档案代号是白桦113。",
+      "citation": "note-1583-1601",
+      "verified": true,
+      "retrieved": [
+        "note-1583-1601",
+        "note-3725-3743"
+      ],
+      "prompt_tokens": 4266,
+      "backend": "torch-mps",
+      "correct": false,
+      "seconds": 2.69
+    },
+    {
+      "case": "instrument",
+      "budget": 4096,
+      "position": "front",
+      "note_tokens": 4147,
+      "notes_sha256": "4bf1bc82b3e0b165e9e86d125a58052e314c7013ff4aa4e01f854694e4652faa",
+      "target_start_tokens": 381,
+      "expected_citation": "note-503-520",
+      "expected_answer": "西库温控仪的校准编号是云杉806。",
+      "answer": "西库温控仪的校准编号是云杉806。",
+      "citation": "note-503-520",
+      "verified": true,
+      "retrieved": [
+        "note-503-520",
+        "note-1601-1618",
+        "note-3742-3759"
+      ],
+      "prompt_tokens": 4330,
+      "backend": "torch-mps",
+      "correct": true,
+      "seconds": 2.79
+    },
+    {
+      "case": "instrument",
+      "budget": 4096,
+      "position": "middle",
+      "note_tokens": 4147,
+      "notes_sha256": "26bd0fae5eeb8c031dffb7f0ad81755a44722dd3cd6490bd0e1df3b7792258bc",
+      "target_start_tokens": 2009,
+      "expected_citation": "note-2649-2666",
+      "expected_answer": "西库温控仪的校准编号是云杉806。",
+      "answer": "西库温控仪的校准编号是云杉806。",
+      "citation": "note-2649-2666",
+      "verified": true,
+      "retrieved": [
+        "note-2649-2666",
+        "note-1583-1600",
+        "note-3742-3759"
+      ],
+      "prompt_tokens": 4334,
+      "backend": "torch-mps",
+      "correct": true,
+      "seconds": 2.91
+    },
+    {
+      "case": "instrument",
+      "budget": 4096,
+      "position": "end",
+      "note_tokens": 4147,
+      "notes_sha256": "51e965cc23b39038ac58617322e19770001f3e04ee4ec1992cd10f4653da5a04",
+      "target_start_tokens": 3701,
+      "expected_citation": "note-4858-4875",
+      "expected_answer": "西库温控仪的校准编号是云杉806。",
+      "answer": "西库温控仪的校准编号是云杉806。",
+      "citation": "note-4858-4875",
+      "verified": true,
+      "retrieved": [
+        "note-4858-4875",
+        "note-1583-1600",
+        "note-3724-3741"
+      ],
+      "prompt_tokens": 4334,
+      "backend": "torch-mps",
+      "correct": true,
+      "seconds": 2.84
+    },
+    {
+      "case": "instrument",
+      "budget": 4096,
+      "position": "absent",
+      "note_tokens": 4131,
+      "notes_sha256": "08ab3e8124010f3ccbfa612c2f848df8484ff33117a383152702c8d6ea7e49dc",
+      "target_start_tokens": null,
+      "expected_citation": "",
+      "expected_answer": "现有资料没有足够证据回答这个问题。",
+      "answer": "东库温控仪的校准编号是青石214。",
+      "citation": "note-1583-1600",
+      "verified": true,
+      "retrieved": [
+        "note-1583-1600",
+        "note-3724-3741"
+      ],
+      "prompt_tokens": 4271,
+      "backend": "torch-mps",
+      "correct": false,
+      "seconds": 2.66
+    },
+    {
+      "case": "archive",
+      "budget": 33000,
+      "position": "front",
+      "note_tokens": 33045,
+      "notes_sha256": "a59eef2a81363f0e8bbc41bcddc1fee9b0d7782c76b111b77005120df897746c",
+      "target_start_tokens": 3149,
+      "expected_citation": "note-4141-4159",
+      "expected_answer": "秋季复核批次的档案代号是松塔427。",
+      "answer": "秋季复核批次的档案代号是松塔427。",
+      "citation": "note-4141-4159",
+      "verified": true,
+      "retrieved": [
+        "note-4141-4159",
+        "note-12716-12734",
+        "note-29814-29832"
+      ],
+      "prompt_tokens": 33236,
+      "backend": "mlx-metal",
+      "correct": true,
+      "seconds": 25.68
+    },
+    {
+      "case": "archive",
+      "budget": 33000,
+      "position": "middle",
+      "note_tokens": 33045,
+      "notes_sha256": "e2c4d6942ce4316fa95bc163f6604585ac18d8956c9f95eaabacb87838d352ae",
+      "target_start_tokens": 16274,
+      "expected_citation": "note-21272-21290",
+      "expected_answer": "秋季复核批次的档案代号是松塔427。",
+      "answer": "秋季复核批次的档案代号是松塔427。",
+      "citation": "note-21272-21290",
+      "verified": true,
+      "retrieved": [
+        "note-21272-21290",
+        "note-12697-12715",
+        "note-29814-29832"
+      ],
+      "prompt_tokens": 33240,
+      "backend": "mlx-metal",
+      "correct": true,
+      "seconds": 23.25
+    },
+    {
+      "case": "archive",
+      "budget": 33000,
+      "position": "end",
+      "note_tokens": 33045,
+      "notes_sha256": "c7585e603943a76b2fe666c908ba472eacd6a25e1f6902110cd6142e206c54ad",
+      "target_start_tokens": 29613,
+      "expected_citation": "note-38611-38629",
+      "expected_answer": "秋季复核批次的档案代号是松塔427。",
+      "answer": "秋季复核批次的档案代号是松塔427。",
+      "citation": "note-38611-38629",
+      "verified": true,
+      "retrieved": [
+        "note-38611-38629",
+        "note-12697-12715",
+        "note-29795-29813"
+      ],
+      "prompt_tokens": 33240,
+      "backend": "mlx-metal",
+      "correct": true,
+      "seconds": 22.77
+    },
+    {
+      "case": "archive",
+      "budget": 33000,
+      "position": "absent",
+      "note_tokens": 33030,
+      "notes_sha256": "f734bcc4a8f2b8d1c6a51c5484e2d3ef4473c1a2e03ce807fbd175449295a1a9",
+      "target_start_tokens": null,
+      "expected_citation": "",
+      "expected_answer": "现有资料没有足够证据回答这个问题。",
+      "answer": "春季复核批次的档案代号是白桦113。",
+      "citation": "note-12697-12715",
+      "verified": true,
+      "retrieved": [
+        "note-12697-12715",
+        "note-29795-29813"
+      ],
+      "prompt_tokens": 33175,
+      "backend": "mlx-metal",
+      "correct": false,
+      "seconds": 22.63
+    },
+    {
+      "case": "instrument",
+      "budget": 33000,
+      "position": "front",
+      "note_tokens": 33048,
+      "notes_sha256": "223b99ba0e706c8b12f339b0275b306e8e9e83c496f9c859bd061906da005f9c",
+      "target_start_tokens": 3149,
+      "expected_citation": "note-4141-4158",
+      "expected_answer": "西库温控仪的校准编号是云杉806。",
+      "answer": "西库温控仪的校准编号是云杉806。",
+      "citation": "note-4141-4158",
+      "verified": true,
+      "retrieved": [
+        "note-4141-4158",
+        "note-12715-12732",
+        "note-29812-29829"
+      ],
+      "prompt_tokens": 33243,
+      "backend": "mlx-metal",
+      "correct": true,
+      "seconds": 22.91
+    },
+    {
+      "case": "instrument",
+      "budget": 33000,
+      "position": "middle",
+      "note_tokens": 33048,
+      "notes_sha256": "d31de14bf5984e001f752707b2552ea4b4eb877dc39b3469a7d83fb00e66441f",
+      "target_start_tokens": 16275,
+      "expected_citation": "note-21271-21288",
+      "expected_answer": "西库温控仪的校准编号是云杉806。",
+      "answer": "西库温控仪的校准编号是云杉806。",
+      "citation": "note-21271-21288",
+      "verified": true,
+      "retrieved": [
+        "note-21271-21288",
+        "note-12697-12714",
+        "note-29812-29829"
+      ],
+      "prompt_tokens": 33247,
+      "backend": "mlx-metal",
+      "correct": true,
+      "seconds": 22.97
+    },
+    {
+      "case": "instrument",
+      "budget": 33000,
+      "position": "end",
+      "note_tokens": 33048,
+      "notes_sha256": "0e72759b58c22dc460e8742cf910a0b2c81df0bd8d7cf754b5ecc4294844da19",
+      "target_start_tokens": 29615,
+      "expected_citation": "note-38609-38626",
+      "expected_answer": "西库温控仪的校准编号是云杉806。",
+      "answer": "西库温控仪的校准编号是云杉806。",
+      "citation": "note-38609-38626",
+      "verified": true,
+      "retrieved": [
+        "note-38609-38626",
+        "note-12697-12714",
+        "note-29794-29811"
+      ],
+      "prompt_tokens": 33247,
+      "backend": "mlx-metal",
+      "correct": true,
+      "seconds": 22.94
+    },
+    {
+      "case": "instrument",
+      "budget": 33000,
+      "position": "absent",
+      "note_tokens": 33032,
+      "notes_sha256": "ed9360603113c9a74e69d2bb4c9f6c1715b28fe56c89a442b7083209d535e8ff",
+      "target_start_tokens": null,
+      "expected_citation": "",
+      "expected_answer": "现有资料没有足够证据回答这个问题。",
+      "answer": "东库温控仪的校准编号是青石214。",
+      "citation": "note-12697-12714",
+      "verified": true,
+      "retrieved": [
+        "note-12697-12714",
+        "note-29794-29811"
+      ],
+      "prompt_tokens": 33180,
+      "backend": "mlx-metal",
+      "correct": false,
+      "seconds": 22.81
+    }
+  ]
+}
